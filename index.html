@@ -70,16 +70,13 @@
       radial-gradient(ellipse at 90% 90%,rgba(127,191,122,0.06) 0%,transparent 45%);
   }
   .hero-inner{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 2rem;width:100%;}
+  .hero-banner{border-radius:16px;overflow:hidden;border:1px solid var(--border-s);margin:0 0 2rem;box-shadow:0 24px 70px -24px rgba(0,0,0,0.65);}
+  .hero-banner img{display:block;width:100%;height:auto;}
   .hero-eyebrow{
     font-family:ui-monospace,monospace;font-size:0.78rem;letter-spacing:0.26em;text-transform:uppercase;
     color:var(--green);margin:0 0 1.1rem;display:flex;align-items:center;gap:0.6rem;
   }
   .hero-eyebrow::before{content:"> ";color:var(--faint);}
-  h1.name{
-    font-size:clamp(3.4rem,9vw,6.6rem);font-weight:800;margin:0 0 .3rem;letter-spacing:-0.03em;line-height:0.98;
-    background:linear-gradient(140deg,var(--text) 0%,var(--amber-g) 55%,var(--purple-g) 100%);
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
   .hero-sub{font-size:clamp(1.05rem,2vw,1.35rem);color:var(--dim);max-width:640px;margin:0.6rem 0 2rem;}
   .hero-sub b{color:var(--text);font-weight:600;}
   .stat-strip{display:flex;flex-wrap:wrap;gap:1.6rem 2.4rem;margin:0 0 2.4rem;}
@@ -201,8 +198,8 @@
 <section class="hero" id="overview">
   <div class="hero-bg"></div>
   <div class="hero-inner">
+    <div class="hero-banner"><img src="lateania-banner.png" alt="Lateania — Guide to the Realm"></div>
     <p class="hero-eyebrow">a door game on late.sh</p>
-    <h1 class="name">Lateania</h1>
     <p class="hero-sub">
       A full <b>fantasy MUD</b> living inside your terminal — no client, no launcher, no download.
       Just a text stream over SSH, and underneath it: <b>8,555 rooms</b> across fourteen lands,
