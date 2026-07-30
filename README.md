@@ -1,4 +1,4 @@
-# Lateania — a living world inside your terminal
+# Lateania: a living world inside your terminal
 
 The official guide site for **Lateania**, a fantasy MUD designed and built by
 [Tony Hosaroygard](https://www.linkedin.com/in/tonyharrisson/), living inside
