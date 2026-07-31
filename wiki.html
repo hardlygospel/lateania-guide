@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lateania Wiki: player guide, tips, and controls</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Lateania player wiki: new-player guide, full controls reference, gear and trade economy tips, taming and mounts, Wildbound and Genesys systems, and region-by-region advice.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:      #0a0907;
+    --bg-1:    #14110d;
+    --bg-2:    #1c1712;
+    --bg-card: #201a14;
+    --border:  #362c1f;
+    --border-s:#4d3d29;
+    --text:    #ece3d4;
+    --dim:     #a5927a;
+    --faint:   #5c4c39;
+    --amber:   #e8a34d;
+    --amber-g: #f6c983;
+    --purple:  #b98cf0;
+    --purple-g:#d3b5f7;
+    --green:   #7fbf7a;
+    --red:     #e0685a;
+    --blue:    #6fb2d8;
+    --nav-h:   56px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;padding:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.65;font-size:16px;
+  }
+  a{color:var(--amber);text-decoration:none;}
+  a:hover{color:var(--amber-g);text-decoration:underline;}
+  code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:0.9em;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 2rem;}
+  section{scroll-margin-top:calc(var(--nav-h) + 1rem);}
+  ::selection{background:var(--amber);color:#1a1206;}
+
+  nav{
+    position:sticky;top:0;z-index:100;height:var(--nav-h);
+    background:rgba(10,9,7,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);display:flex;align-items:center;
+  }
+  .nav-inner{max-width:1180px;margin:0 auto;padding:0 2rem;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .nav-brand{font-family:ui-monospace,monospace;font-size:0.9rem;font-weight:700;color:var(--text);letter-spacing:0.05em;white-space:nowrap;}
+  .nav-brand em{color:var(--amber);font-style:normal;}
+  .nav-links{display:flex;overflow-x:auto;scrollbar-width:none;}
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{
+    color:var(--dim);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
+    padding:0 0.9rem;height:var(--nav-h);display:flex;align-items:center;
+    border-bottom:2px solid transparent;margin-bottom:-1px;font-family:ui-monospace,monospace;
+    transition:color .15s;white-space:nowrap;text-decoration:none;flex-shrink:0;
+  }
+  .nav-links a:hover{color:var(--amber-g);border-bottom-color:var(--amber);}
+  @media(max-width:900px){.nav-links{display:none;}}
+
+  header.top{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--border);}
+  .top-eyebrow{
+    font-family:ui-monospace,monospace;font-size:0.78rem;letter-spacing:0.26em;text-transform:uppercase;
+    color:var(--green);margin:0 0 1rem;display:flex;align-items:center;gap:0.6rem;
+  }
+  .top-eyebrow::before{content:"> ";color:var(--faint);}
+  h1.wiki-title{
+    font-size:clamp(2.4rem,5.5vw,3.4rem);font-weight:800;margin:0 0 0.6rem;letter-spacing:-0.02em;
+    background:linear-gradient(140deg,var(--text) 0%,var(--amber-g) 55%,var(--purple-g) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .top-sub{color:var(--dim);font-size:1.05rem;max-width:760px;margin:0;}
+
+  .sec{padding:4.2rem 0;border-top:1px solid var(--border);}
+  .sec-label{font-family:ui-monospace,monospace;font-size:0.76rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--purple-g);margin:0 0 0.7rem;}
+  .sec-title{font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:800;margin:0 0 0.8rem;letter-spacing:-0.02em;}
+  .sec-sub{color:var(--dim);max-width:760px;font-size:1.02rem;margin:0 0 2rem;}
+
+  .toc{
+    display:flex;flex-wrap:wrap;gap:0.6rem;padding:1.4rem 1.6rem;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:12px;margin-top:2rem;
+  }
+  .toc a{
+    font-family:ui-monospace,monospace;font-size:0.78rem;padding:0.35rem 0.8rem;border-radius:20px;
+    border:1px solid var(--border-s);color:var(--dim);
+  }
+  .toc a:hover{color:var(--amber-g);border-color:var(--amber);text-decoration:none;}
+
+  .kbd{
+    display:inline-flex;align-items:center;justify-content:center;min-width:1.9rem;padding:0.15rem 0.5rem;
+    font-family:ui-monospace,monospace;font-size:0.86rem;font-weight:700;color:var(--amber-g);
+    background:var(--bg-2);border:1px solid var(--border-s);border-bottom-width:2px;border-radius:6px;
+  }
+
+  table.reftable{width:100%;border-collapse:collapse;font-size:0.92rem;}
+  table.reftable th,table.reftable td{padding:0.65rem 0.9rem;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;}
+  table.reftable th{color:var(--purple-g);font-family:ui-monospace,monospace;font-size:0.72rem;letter-spacing:0.05em;text-transform:uppercase;}
+  table.reftable td{color:var(--dim);}
+  table.reftable td.strong{color:var(--text);}
+  .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--bg-card);padding:0.4rem 1rem;margin-bottom:1.6rem;}
+
+  .tip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem;}
+  .tip{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;
+    display:flex;flex-direction:column;gap:0.5rem;
+  }
+  .tip b{color:var(--amber-g);font-size:0.98rem;}
+  .tip p{color:var(--dim);font-size:0.92rem;margin:0;}
+
+  .callout{
+    display:flex;gap:0.9rem;background:rgba(232,163,77,0.07);border:1px solid rgba(232,163,77,0.3);
+    border-radius:12px;padding:1.2rem 1.4rem;margin:1.6rem 0;
+  }
+  .callout .ico{font-size:1.3rem;flex-shrink:0;line-height:1.4;}
+  .callout p{margin:0;color:var(--dim);font-size:0.94rem;}
+  .callout b{color:var(--text);}
+  .callout.warn{background:rgba(224,104,90,0.08);border-color:rgba(224,104,90,0.3);}
+  .callout.myth{background:rgba(185,140,240,0.08);border-color:rgba(185,140,240,0.3);}
+
+  .steps{counter-reset:step;list-style:none;margin:0;padding:0;display:grid;gap:1.2rem;}
+  .steps li{position:relative;padding-left:3rem;}
+  .steps li::before{
+    counter-increment:step;content:counter(step);position:absolute;left:0;top:-0.1rem;
+    width:2.2rem;height:2.2rem;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-s);
+    display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-weight:700;color:var(--amber-g);
+  }
+  .steps b{color:var(--text);}
+  .steps span{color:var(--dim);font-size:0.94rem;}
+
+  .region-tier{padding:0.1rem 0.5rem;border-radius:5px;font-size:0.68rem;font-family:ui-monospace,monospace;text-transform:uppercase;letter-spacing:0.04em;}
+  .t-safe{background:rgba(127,191,122,0.14);color:var(--green);border:1px solid rgba(127,191,122,0.3);}
+  .t-wilds{background:rgba(111,178,216,0.14);color:var(--blue);border:1px solid rgba(111,178,216,0.3);}
+  .t-endgame{background:rgba(185,140,240,0.14);color:var(--purple-g);border:1px solid rgba(185,140,240,0.35);}
+  .t-brutal{background:rgba(224,104,90,0.14);color:var(--red);border:1px solid rgba(224,104,90,0.32);}
+  .t-deadly{background:rgba(224,104,90,0.22);color:#ff9d8c;border:1px solid rgba(224,104,90,0.5);}
+  .t-peaceful{background:rgba(127,191,122,0.14);color:var(--green);border:1px solid rgba(127,191,122,0.3);}
+  .t-moderate{background:rgba(232,163,77,0.14);color:var(--amber-g);border:1px solid rgba(232,163,77,0.3);}
+
+  .faq dt{font-weight:700;color:var(--text);margin-top:1.3rem;font-size:0.98rem;}
+  .faq dd{margin:0.35rem 0 0;color:var(--dim);font-size:0.94rem;}
+
+  footer{border-top:1px solid var(--border);padding:3rem 0;}
+  .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:center;}
+  .foot-note{color:var(--faint);font-size:0.85rem;max-width:560px;}
+  .foot-links a{color:var(--dim);font-size:0.85rem;margin-left:1.2rem;}
+  .foot-links a:first-child{margin-left:0;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">LATE<em>ANIA</em> WIKI</div>
+    <div class="nav-links">
+      <a href="#start">Getting started</a>
+      <a href="#controls">Controls</a>
+      <a href="#leveling">Leveling</a>
+      <a href="#gear">Gear</a>
+      <a href="#trades">Trades</a>
+      <a href="#taming">Taming</a>
+      <a href="#genesys">Villagers &amp; wildlife</a>
+      <a href="#regions">Regions</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<header class="top">
+  <div class="wrap">
+    <p class="top-eyebrow">the player wiki</p>
+    <h1 class="wiki-title">Everything you need to play Lateania well</h1>
+    <p class="top-sub">
+      A working reference, not a sales pitch: every control, every system, and the tips that actually
+      matter for a new adventurer stepping off the King's Road for the first time. See the
+      <a href="index.html">overview guide</a> for the pitch; this page is for once you're already in.
+    </p>
+    <div class="toc">
+      <a href="#start">Getting started</a>
+      <a href="#controls">Full controls reference</a>
+      <a href="#leveling">Classes &amp; leveling tips</a>
+      <a href="#gear">Gear &amp; the economy</a>
+      <a href="#trades">Trades &amp; crafting</a>
+      <a href="#taming">Taming, mounts &amp; strays</a>
+      <a href="#genesys">Villagers &amp; wildlife</a>
+      <a href="#regions">Region-by-region tips</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="start">
+  <div class="wrap">
+    <p class="sec-label">01 · First steps</p>
+    <h2 class="sec-title">Getting started</h2>
+    <p class="sec-sub">No client, no install, no account to make up front. Everything below assumes you've never touched a MUD before.</p>
+    <ol class="steps">
+      <li><b>Connect.</b><br><span>Open a terminal and run <code>ssh late.sh</code>. Any terminal on macOS, Linux, or Windows works.</span></li>
+      <li><b>Pick an interaction mode.</b><br><span>You'll be asked once: Keyboard (mouse fully off, so your terminal's native copy/paste still works), Mouse (click everything), or Hybrid. Change it anytime in Settings.</span></li>
+      <li><b>Find the Games hub and open Lateania.</b><br><span>Roll a class, name your character, and build a look from the appearance menu - build, hair, eyes, and more. There's no separate race system; the class you pick is what shapes how you play.</span></li>
+      <li><b>Read the room.</b><br><span>Every room tells you its exits, what's lying around to examine, any shop or villager standing there, and any wildlife sharing the space. Nothing important is ever hidden - it's always right there in the text.</span></li>
+      <li><b>Fight something small first.</b><br><span>Embergate's Town Square and the King's Road are gentle. Get a feel for your class's rhythm before heading toward the Frontier.</span></li>
+    </ol>
+    <div class="callout">
+      <span class="ico">💡</span>
+      <p><b>Tip:</b> talk to the villager standing in almost every safe room (press <span class="kbd">o</span>). A good number of them aren't just color - they'll point you at a real shop, dungeon, or trade you might not have found yet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="controls">
+  <div class="wrap">
+    <p class="sec-label">02 · Reference</p>
+    <h2 class="sec-title">Full controls reference</h2>
+    <p class="sec-sub">Every key does one obvious thing in a given context. Movement uses the same keys as look-around games you already know.</p>
+
+    <div class="table-wrap">
+      <table class="reftable">
+        <tr><th>Keys</th><th>Does</th></tr>
+        <tr><td class="strong"><span class="kbd">w</span> <span class="kbd">a</span> <span class="kbd">s</span> <span class="kbd">d</span> / arrows</td><td>Move north/west/south/east. In a list panel, w/s (or up/down) move the cursor instead.</td></tr>
+        <tr><td class="strong"><span class="kbd">&lt;</span> <span class="kbd">,</span> / <span class="kbd">&gt;</span> <span class="kbd">.</span></td><td>Go up / down (shown as a hint whenever a room has a vertical exit).</td></tr>
+        <tr><td class="strong"><span class="kbd">space</span> / <span class="kbd">x</span></td><td>Attack. In a list panel, x sells the selected item instead.</td></tr>
+        <tr><td class="strong"><span class="kbd">1</span>-<span class="kbd">9</span> <span class="kbd">0</span></td><td>Use the ability in that action-bar slot (0 is the 10th). Deeper rosters cast from the Abilities panel.</td></tr>
+        <tr><td class="strong"><span class="kbd">Q</span></td><td>Quaff the best-fitting healing potion without leaving the view - built for mid-fight, so you never lose sight of the health bars.</td></tr>
+        <tr><td class="strong"><span class="kbd">z</span></td><td>Flee the fight.</td></tr>
+        <tr><td class="strong"><span class="kbd">G</span></td><td>Mount or dismount a rideable companion. One step then strides several rooms (the best beasts skip 5). Combat puts you back on foot.</td></tr>
+        <tr><td class="strong"><span class="kbd">~</span></td><td>Feed and tend your companion, from anywhere - no stable needed. If a wild adoptable creature shares the room and your own pet doesn't need care, this feeds it instead (see Villagers &amp; wildlife below).</td></tr>
+        <tr><td class="strong"><span class="kbd">r</span></td><td>Speak the word of recall: free warp to Embergate's Town Square (out of combat). While standing over a corpse, releases to the temple instead.</td></tr>
+        <tr><td class="strong"><span class="kbd">:</span> / <span class="kbd">/</span></td><td>Fix a personal waypoint here (free) / warp to it from anywhere (250 gold, out of combat). See Gear &amp; the economy below.</td></tr>
+        <tr><td class="strong"><span class="kbd">;</span></td><td>Retreat to the nearest safe haven, without re-walking a whole maze zone.</td></tr>
+        <tr><td class="strong"><span class="kbd">g</span></td><td>Cast the Resurrection rite on a fallen adventurer in the room (holy/nature classes).</td></tr>
+        <tr><td class="strong"><span class="kbd">y</span></td><td>Work a resource node here - chop, mine, fish, forage, or skin, whichever fits.</td></tr>
+        <tr><td class="strong"><span class="kbd">u</span></td><td>Open the crafting panel where a craft station stands.</td></tr>
+        <tr><td class="strong"><span class="kbd">o</span></td><td>Look at things in the room, or talk to a villager standing here - both live in the same Examine list.</td></tr>
+        <tr><td class="strong"><span class="kbd">m</span> / <span class="kbd">M</span></td><td>m opens the world atlas (pan around); M toggles the live walk-around field view on/off (off is a plain text MUD).</td></tr>
+        <tr><td class="strong"><span class="kbd">c</span> <span class="kbd">v</span> <span class="kbd">b</span> <span class="kbd">t</span></td><td>Character sheet, Abilities, Shop (where one stands), Inventory ("things").</td></tr>
+        <tr><td class="strong"><span class="kbd">p</span></td><td>Open the Stable where one stands - buy a companion (Enter) or feed/tend the one you have (x).</td></tr>
+        <tr><td class="strong"><span class="kbd">q</span></td><td>Open the Animal Taming panel where a tameable wild beast roams (Enter attempts the tame).</td></tr>
+        <tr><td class="strong"><span class="kbd">n</span></td><td>Open the housing ledger - buy a deed at the clerk, or furnish a home you own from inside it.</td></tr>
+        <tr><td class="strong"><span class="kbd">j</span> / <span class="kbd">k</span></td><td>Quest journal / your earned titles.</td></tr>
+        <tr><td class="strong"><span class="kbd">i</span></td><td>Open the waystone network where one stands - fast travel to villages and known gates.</td></tr>
+        <tr><td class="strong"><span class="kbd">f</span></td><td>Toggle auto-following another adventurer in the room.</td></tr>
+        <tr><td class="strong"><span class="kbd">'</span></td><td>Open the local chat line (say to the room - stays local, doesn't leak into late.sh chat).</td></tr>
+        <tr><td class="strong"><span class="kbd">[</span> / <span class="kbd">]</span></td><td>Manual scroll for the cursor-less text panels (character sheet, abilities, quests).</td></tr>
+        <tr><td class="strong"><span class="kbd">Esc</span></td><td>Leave Lateania for the late.sh Games hub.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="leveling">
+  <div class="wrap">
+    <p class="sec-label">03 · Progression</p>
+    <h2 class="sec-title">Classes &amp; leveling tips</h2>
+    <p class="sec-sub">All seventeen classes run to level 100, each with its own resource and a capstone finisher waiting at the summit.</p>
+    <div class="tip-grid">
+      <div class="tip"><b>Pick by resource, not just theme.</b><p>Rage/Ki classes (Warrior, Berserker, Monk) build resource by fighting, so they never sit idle waiting to cast. Mana/Souls/Tempo classes have to manage a pool - read your class's passive trait, it usually tells you exactly how.</p></div>
+      <div class="tip"><b>Your class trait is always on.</b><p>No cooldown, no toggle - it's just true. Warriors survive one killing blow at 1 HP; Rogues always crit their opening strike. Build your opening move around it.</p></div>
+      <div class="tip"><b>The King's Road teaches the basics.</b><p>Everything from Embergate to the four capitals is gentle. Don't rush past it - it's where you learn your rotation before anything can really punish a mistake.</p></div>
+      <div class="tip"><b>Frontier is the real level-up zone.</b><p>Twenty zones, each meaner than the last, ending at the King Who Was Promised Nothing. This is where most of your leveling happens once the early game runs dry.</p></div>
+      <div class="tip"><b>Wildbound only opens past level 50.</b><p>The new levels 51-100, the tenth ability per class, and the endgame gear curve all sit past the old cap. Don't expect Frontier tier-1 gear to feel like the ceiling - it's the floor of a much longer climb.</p></div>
+      <div class="tip"><b>Titles are earned, not farmed.</b><p>Only named bosses grant a themed title now. Don't grind trash mobs hoping for one - go hunt an actual boss instead.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="gear">
+  <div class="wrap">
+    <p class="sec-label">04 · Economy</p>
+    <h2 class="sec-title">Gear &amp; the economy</h2>
+    <p class="sec-sub">The short version: gold shops sell good gear, but never the best gear. The best gear is always found or made.</p>
+    <div class="callout warn">
+      <span class="ico">⚠️</span>
+      <p><b>Shops cap at Epic rarity.</b> Legendary equipment is never sold for gold, on purpose - it's earned from the world (Frontier, Reaches, Kaelmyr, the Archipelago, or a handful of named boss drops) or forged at a trade's top tier. If you're saving gold hoping for a Legendary purchase, spend it on something else instead: a Stable companion, a home deed, or banking it for later.</p>
+    </div>
+    <div class="tip-grid">
+      <div class="tip"><b>Every slot has a real shop ladder now.</b><p>Legs and boots used to be stuck on the starting piece with nothing to upgrade to. All eight gear slots now climb Common through Epic at the Outfitter.</p></div>
+      <div class="tip"><b>The deeper you go, the better the loot - always.</b><p>A Frontier tier-1 drop is built to clear whatever the shops can sell you, in every slot. If a "dangerous" zone ever hands you something worse than your shop gear, that's the bug it used to be - it's fixed now.</p></div>
+      <div class="tip"><b>Trinkets and rings aren't filler.</b><p>Every one in the game carries a real, visible stat bonus. If it looks empty, you're probably looking at the wrong line - check the stat summary.</p></div>
+      <div class="tip"><b>Bank your gold before anything risky.</b><p>The bank in Embergate protects it completely. Dying broke because you were carrying a fortune is an entirely avoidable kind of bad day.</p></div>
+    </div>
+    <h3 style="margin-top:2.4rem;font-size:1.15rem;">Recall vs. the waypoint</h3>
+    <p class="sec-sub" style="margin-bottom:1rem;">Two different tools for two different trips.</p>
+    <div class="table-wrap">
+      <table class="reftable">
+        <tr><th>Tool</th><th>Key</th><th>Goes where</th><th>Cost</th></tr>
+        <tr><td class="strong">Word of recall</td><td><span class="kbd">r</span></td><td>Always Embergate's Town Square</td><td>Free</td></tr>
+        <tr><td class="strong">Personal waypoint</td><td><span class="kbd">:</span> to set, <span class="kbd">/</span> to warp</td><td>Wherever you last marked it - your camp deep in the Frontier, say</td><td>250 gold per warp; setting it is free</td></tr>
+      </table>
+    </div>
+    <p class="sec-sub">Mark a waypoint right before you go deep into dangerous ground. When you need to run back for healing, resurrecting a companion, or restocking, <span class="kbd">/</span> gets you straight back to where you left off instead of a full re-walk.</p>
+  </div>
+</section>
+
+<section class="sec" id="trades">
+  <div class="wrap">
+    <p class="sec-label">05 · Crafting</p>
+    <h2 class="sec-title">Trades &amp; crafting</h2>
+    <p class="sec-sub">Five gathering skills feed five crafting skills, six tiers deep, all the way to skill 100.</p>
+    <div class="table-wrap">
+      <table class="reftable">
+        <tr><th>Gather</th><th>Feeds</th><th>Entry material</th><th>Tier-6 summit</th></tr>
+        <tr><td class="strong">Woodcutting</td><td>Woodworking</td><td>Birch Log</td><td>Worldtree Log</td></tr>
+        <tr><td class="strong">Mining</td><td>Smithing</td><td>Copper Ore</td><td>Starmetal Ore</td></tr>
+        <tr><td class="strong">Fishing</td><td>Cooking</td><td>River Bream</td><td>Abyss Eel</td></tr>
+        <tr><td class="strong">Foraging</td><td>Alchemy</td><td>Marsh Sage</td><td>Dreamlotus</td></tr>
+        <tr><td class="strong">Skinning</td><td>Leatherworking</td><td>Rough Hide</td><td>Wyrmhide</td></tr>
+      </table>
+    </div>
+    <div class="tip-grid">
+      <div class="tip"><b>Craft your own weapon and chest piece early.</b><p>Even a tier-1 crafted sword or plate is a genuine step up over nothing, and every tier after it is a clear, visible improvement over the last.</p></div>
+      <div class="tip"><b>Top-tier crafted gear rivals the Frontier's own entry gear.</b><p>A tier-6 (skill 100) weapon lands right around a Frontier tier-1 drop in raw power - a real, viable path if you'd rather craft than explore for your gear.</p></div>
+      <div class="tip"><b>Gather where you already are.</b><p>Nodes are scattered generously through the early lands and the Sunderlakes especially - you don't need to detour far to keep your trade skills climbing alongside your character level.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="taming">
+  <div class="wrap">
+    <p class="sec-label">06 · Companions</p>
+    <h2 class="sec-title">Taming, mounts &amp; strays</h2>
+    <p class="sec-sub">Three separate ways to end up with a companion, and they all stack.</p>
+    <div class="table-wrap">
+      <table class="reftable">
+        <tr><th>Companion type</th><th>How you get one</th><th>Fights?</th><th>Slot</th></tr>
+        <tr><td class="strong">Stable companion</td><td>Bought with gold at a capital Stable (<span class="kbd">p</span>)</td><td>Yes - splashes damage, levels with loyalty</td><td>Your main pet</td></tr>
+        <tr><td class="strong">Tamed wild beast</td><td>Tame a beast roaming Broceliande (<span class="kbd">q</span>), including 10 rideable mounts</td><td>Yes, same as a Stable companion</td><td>Your main pet (replaces a Stable companion if you have one)</td></tr>
+        <tr><td class="strong">Stray</td><td>Feed an adoptable wild creature daily, five days running (<span class="kbd">~</span>)</td><td>No - a companion for the road, not the fight</td><td>Its own slot, on top of whichever pet you already keep</td></tr>
+      </table>
+    </div>
+    <div class="callout">
+      <span class="ico">🐾</span>
+      <p><b>Feeding a downed pet always comes first.</b> If your main companion is hurt or knocked out, <span class="kbd">~</span> heals it before it ever tries to court a wild stray in the same room - you'll never lose progress on an emergency by accident.</p>
+    </div>
+    <div class="tip-grid">
+      <div class="tip"><b>Ten mounts, five wild and five mythical.</b><p>All rideable, striding 2 to 5 rooms per step. The mythical ones (up to the Aurora Worldserpent) sit at the very top of the taming ladder, gated up to level 100.</p></div>
+      <div class="tip"><b>Miss a day of feeding a stray, and it resets.</b><p>The five-day streak has to be consecutive. Same-day re-feeding does nothing - come back tomorrow.</p></div>
+      <div class="tip"><b>Cats and dogs are mostly near towns.</b><p>Adoptable creatures cluster around capitals, districts, and the housing close - places you'll naturally pass through daily anyway. The mythical ones wait at the far gateways instead.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="genesys">
+  <div class="wrap">
+    <p class="sec-label">07 · A living world</p>
+    <h2 class="sec-title">Villagers &amp; wildlife (Genesys)</h2>
+    <p class="sec-sub">The world talks back now. Here's how to make the most of it.</p>
+    <div class="tip-grid">
+      <div class="tip"><b>Every safe room has someone to talk to.</b><p>Press <span class="kbd">o</span> wherever you see a villager announced. A good fraction of their lines are real clues, not just color - worth checking in an unfamiliar region.</p></div>
+      <div class="tip"><b>You'll never miss one.</b><p>A villager is always announced up front in the room description - "waiting for a question" - never buried in a menu you have to think to open.</p></div>
+      <div class="tip"><b>Birds aren't always flying.</b><p>The same bird alternates between wheeling overhead and perched nearby every few minutes. If you don't see it aloft, look again in a bit - or check the ground.</p></div>
+    </div>
+    <div class="callout myth">
+      <span class="ico">✨</span>
+      <p><b>Mythical creatures stand out on purpose</b> - their own colour in the Wildlife list, whether they're a bird, a boon, or a stray waiting to be won over. If something in that list reads differently from the rest, it's worth a second look.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="regions">
+  <div class="wrap">
+    <p class="sec-label">08 · Where to go</p>
+    <h2 class="sec-title">Region-by-region tips</h2>
+    <div class="table-wrap">
+      <table class="reftable">
+        <tr><th>Region</th><th>Tier</th><th>Go there for</th></tr>
+        <tr><td class="strong">Embergate &amp; the King's Road</td><td><span class="region-tier t-safe">safe</span></td><td>Your first shops, the recall fountain, and the easiest possible start.</td></tr>
+        <tr><td class="strong">The Overworld &amp; Capitals</td><td><span class="region-tier t-wilds">wilds</span></td><td>Wandering between the four capitals, each with its own character and district.</td></tr>
+        <tr><td class="strong">The living-dark arc (Catacombs, Thornwood, Caverns)</td><td><span class="region-tier t-endgame">endgame</span></td><td>The first proof the capitals aren't as safe as they look - and the Archdemon waiting at the end.</td></tr>
+        <tr><td class="strong">The Frontier</td><td><span class="region-tier t-brutal">brutal</span></td><td>The main leveling arc from here on - twenty zones, ending at the King Who Was Promised Nothing.</td></tr>
+        <tr><td class="strong">The Sundered Reaches</td><td><span class="region-tier t-brutal">brutal</span></td><td>A second continent that starts where the Frontier ends and climbs past it.</td></tr>
+        <tr><td class="strong">Kaelmyr, the Ashen Reach</td><td><span class="region-tier t-endgame">endgame</span></td><td>The deepest, hardest ground on the mainland.</td></tr>
+        <tr><td class="strong">The Sunderlakes</td><td><span class="region-tier t-peaceful">peaceful</span></td><td>Fishing, foraging, and a rest from combat - forty fish species across fourteen zones.</td></tr>
+        <tr><td class="strong">Broceliande, the Greenwood</td><td><span class="region-tier t-moderate">moderate</span></td><td>Taming - every wild beast and mount in the game roams here, small to mythical.</td></tr>
+        <tr><td class="strong">The Shattered Archipelago</td><td><span class="region-tier t-deadly">deadly</span></td><td>The single deadliest ground in Lateania, reachable only by waystone. Go prepared.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <p class="sec-label">09 · Quick answers</p>
+    <h2 class="sec-title">FAQ</h2>
+    <dl class="faq">
+      <dt>My companion keeps dying mid-fight. What do I do?</dt>
+      <dd>Press <span class="kbd">~</span> to feed and revive it - it works anywhere now, not just at a Stable.</dd>
+      <dt>I'm gearing up but everything the shop sells feels weak. Am I missing something?</dt>
+      <dd>That's by design - shops cap at Epic. Head into the Frontier (or craft) for anything Legendary.</dd>
+      <dt>How do I get a mount?</dt>
+      <dd>Tame one of the ten rideable beasts roaming Broceliande (<span class="kbd">q</span> where one stands), then <span class="kbd">G</span> to saddle up.</dd>
+      <dt>Can I have a mount and a fighting pet at the same time?</dt>
+      <dd>A mount is whichever tamed/Stable companion you currently keep, so riding and fighting share that one slot. A stray (see Taming above) is separate and rides along regardless.</dd>
+      <dt>How do I stop walking all the way back to town to heal up?</dt>
+      <dd>Fix a waypoint (<span class="kbd">:</span>) before heading somewhere deep, then warp back to it (<span class="kbd">/</span>) whenever you need to.</dd>
+      <dt>What do the different colours in the room and panels mean?</dt>
+      <dd>Villagers, mythical creatures, and actionable things (shops, boards, stables) each get their own distinct colour so they stand out from plain scenery at a glance.</dd>
+      <dt>Is there a way to play with a mouse?</dt>
+      <dd>Yes - pick Mouse or Hybrid mode on first login (or switch anytime in Settings). Keyboard mode turns mouse capture fully off so your terminal's native copy/paste works instead.</dd>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <p class="foot-note">
+      Lateania is designed and built by <b style="color:var(--text);">Tony Hosaroygard</b>, and lives inside
+      <b style="color:var(--text);">late.sh</b>, Mateusz Piórowski's SSH terminal clubhouse. This wiki is kept
+      up to date as the world grows.
+    </p>
+    <div class="foot-links">
+      <a href="index.html">Overview guide</a>
+      <a href="https://hardlygospel.github.io">hardlygospel.github.io</a>
+      <a href="https://github.com/hardlygospel/late-sh">late-sh source</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

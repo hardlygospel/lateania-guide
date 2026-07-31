@@ -11,6 +11,11 @@ Shattered Archipelago, the five-skill gather-to-legendary crafting economy,
 the sixty tameable beasts (ten of them rideable), and the Wildbound expansion
 that pushed the level cap to 100.
 
+The **[player wiki](https://hardlygospel.github.io/lateania-guide/wiki.html)**
+(`wiki.html`) is the practical reference: a new-player walkthrough, the full
+controls list, and tips on gear, trades, taming, and the living-world systems
+(Genesys) - separate from this page's overview/pitch.
+
 To play, just:
 
 ```
